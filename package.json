@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/huna91/huna91.github.io#readme",
   "dependencies": {
-    "express": "^4.18.2",
-    "three": "^0.151.3"
+    "gh-pages": "^5.0.0"
   }
 }
