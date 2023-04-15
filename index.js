@@ -1,10 +1,10 @@
-import * as THREE from "./three.js-master";
-import { OrbitControls } from "./three.js-master/examples/jsm/controls/OrbitControls.js";
-import { GLTFLoader } from "./three.js-master/examples/jsm/loaders/GLTFLoader.js";
-import Stats from "./three.js-master/examples/jsm/libs/stats.module.js";
+import * as THREE from "https://unpkg.com/three@0.127.0/build/three.module.js";
+import { OrbitControls } from "https://unpkg.com/three@0.127.0/examples/jsm/controls/OrbitControls.js";
+import { GLTFLoader } from "https://unpkg.com/three@0.127.0/examples/jsm/loaders/GLTFLoader.js";
+import Stats from "https://unpkg.com/three@0.127.0/examples/jsm/libs/stats.module.js";
 // import Stats from "/jsm/libs/stats.module.js";
-import { Octree } from "./three.js-master/examples/jsm/math/Octree.js";
-import { Capsule } from "./three.js-master/examples/jsm/math/Capsule.js";
+import { Octree } from "https://unpkg.com/three@0.127.0/examples/jsm/math/Octree.js";
+import { Capsule } from "https://unpkg.com/three@0.127.0/examples/jsm/math/Capsule.js";
 
 class App {
   constructor() {
