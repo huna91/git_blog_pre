@@ -13,5 +13,42 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  border: 1px solid red;
+  z-index: 1;
+}
+
+#key_explanation_wrap {
+  position: fixed;
+  top: 50px;
+  right: 50px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(147, 141, 141, 0.317);
+}
+
+table {
+  width: 120px;
+  display: flex;
+  margin: 20px;
+}
+th {
+  padding-bottom: 10px;
+}
+.move_key_table td {
+  border: 1px solid white;
+  color: white;
+  align-content: center;
+  width: 30px;
+  height: 33px;
+  margin: 23px;
+  border-radius: 5px;
+}
+.run_key_table td {
+  border: 1px solid white;
+  color: white;
+  align-content: center;
+  width: 30px;
+  height: 33px;
+  margin: 23px;
+  border-radius: 5px;
 }

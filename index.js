@@ -37,7 +37,7 @@ class App {
 
   // 충돌검사 할 수 있는 Octree 메서드
   _setupOctree(model) {
-    // 캐릭터가 충돌 할
+    // 캐릭터가 충돌 할 땅 모델
     this._worldOctree = new Octree();
     this._worldOctree.fromGraphNode(model);
   }
@@ -153,7 +153,7 @@ class App {
           child.receiveShadow = true;
         }
       });
-      space.rotation.y = -Math.PI / 2;
+      space.rotation.y = -Math.PI / 1;
       this._setupOctree(space);
     });
   }
