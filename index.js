@@ -6,6 +6,9 @@ import Stats from "https://unpkg.com/three@0.127.0/examples/jsm/libs/stats.modul
 import { Octree } from "https://unpkg.com/three@0.127.0/examples/jsm/math/Octree.js";
 import { Capsule } from "https://unpkg.com/three@0.127.0/examples/jsm/math/Capsule.js";
 
+import { MakeBox } from "./components/box.js";
+import { MyPicture } from "./components/MyPicture.js";
+
 class App {
   constructor() {
     const divContainer = document.querySelector("#intro_container");
@@ -139,10 +142,10 @@ class App {
       }
     }
   }
-  _setupEnvironment() {
+  async _setupEnvironment() {
     const gltfLoder = new GLTFLoader();
     // 땅 로드
-    gltfLoder.load("./data/place2.glb", (gltf) => {
+    await gltfLoder.load("./data/place2222.glb", (gltf) => {
       const space = gltf.scene;
 
       this._scene.add(space);
@@ -156,13 +159,22 @@ class App {
       space.rotation.y = -Math.PI / 1;
       this._setupOctree(space);
     });
+
+    const box_geometry = new THREE.BoxGeometry(1, 1, 1);
+    const box_meterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    const box = new THREE.Mesh(box_geometry, box_meterial);
+    // console.log(MakeBox());
+    // this._scene.add(MakeBox(0xff0013));
+    this._scene.add(MyPicture());
   }
+  _setupComponents() {}
+
   _setupModel() {
-    // 캐릭터 땅 만들기
+    // 캐릭터 불러오기
     const gltfLoder = new GLTFLoader();
 
     // 캐릭터 로드
-    const url = "./data/RobotExpressive.glb";
+    const url = "./data/RobotExpressive.glb?";
     gltfLoder.load(url, (gltf) => {
       const model = gltf.scene;
       // 씬에 추가
