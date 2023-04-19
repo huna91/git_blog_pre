@@ -2,7 +2,6 @@ import * as THREE from "https://unpkg.com/three@0.127.0/build/three.module.js";
 import { OrbitControls } from "https://unpkg.com/three@0.127.0/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "https://unpkg.com/three@0.127.0/examples/jsm/loaders/GLTFLoader.js";
 import Stats from "https://unpkg.com/three@0.127.0/examples/jsm/libs/stats.module.js";
-// import Stats from "/jsm/libs/stats.module.js";
 import { Octree } from "https://unpkg.com/three@0.127.0/examples/jsm/math/Octree.js";
 import { Capsule } from "https://unpkg.com/three@0.127.0/examples/jsm/math/Capsule.js";
 
@@ -37,7 +36,7 @@ class App {
 
   // 충돌검사 할 수 있는 Octree 메서드
   _setupOctree(model) {
-    // 캐릭터가 충돌 할
+    // 캐릭터가 충돌 할 땅
     this._worldOctree = new Octree();
     this._worldOctree.fromGraphNode(model);
   }
@@ -153,12 +152,11 @@ class App {
           child.receiveShadow = true;
         }
       });
-      space.rotation.y = -Math.PI / 2;
+      space.rotation.y = -Math.PI / 1;
       this._setupOctree(space);
     });
   }
   _setupModel() {
-    // 캐릭터 땅 만들기
     const gltfLoder = new GLTFLoader();
 
     // 캐릭터 로드
@@ -215,8 +213,8 @@ class App {
       this._model = model;
     });
   }
-  //
 
+  // 카메라 설정
   _setupCamera() {
     const camera = new THREE.PerspectiveCamera(
       10,
@@ -225,7 +223,7 @@ class App {
       5000
     );
 
-    camera.position.set(0, 200, 300);
+    camera.position.set(0, 250, 300);
     this._camera = camera;
 
     this._scene.add(this._camera);
@@ -248,6 +246,7 @@ class App {
     // this._scene.add(pointLightHelper);
   }
 
+  // 조명 깐트롤
   _setupLight() {
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
     this._scene.add(ambientLight);
