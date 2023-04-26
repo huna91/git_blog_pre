@@ -1,6 +1,9 @@
+* {
+  margin: 0;
+}
 .canvas_wrap {
+  position: fixed;
   width: 1600px;
-  height: 800px;
-  border: 1px solid red;
+  height: 762px;
   background-color: black;
 }
