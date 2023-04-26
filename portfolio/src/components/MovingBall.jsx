@@ -5,7 +5,7 @@ const MovingBall = ({ position, color }) => {
   // const [_scale, _setScale] = useState((2, 2, 2));
   return (
     <group>
-      <mesh scale={(2, 2, 2)}>
+      <mesh scale={(3, 3, 3)}>
         <Sphere visible args={[1.2, 200, 400]} position={position}>
           <MeshDistortMaterial
             color={color}
