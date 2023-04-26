@@ -5,8 +5,12 @@ const BasicBall = ({ color, position }) => {
   return (
     <group>
       <mesh scale={(2, 2, 2)}>
-        <Sphere visible args={[1.2, 20, 40]} position={position}>
-          <meshStandardMaterial color={color} attach="material" />
+        <Sphere visible args={[1.2, 50, 60]} position={position}>
+          <meshStandardMaterial
+            color={color}
+            attach="material"
+            roughness={0.2}
+          />
         </Sphere>
       </mesh>
     </group>
