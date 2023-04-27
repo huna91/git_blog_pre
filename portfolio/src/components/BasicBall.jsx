@@ -2,34 +2,23 @@ import React, { useEffect, useRef, useState } from "react";
 import { Sphere, MeshDistortMaterial } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
-const BasicBall = ({ wheel, setWheel }) => {
+const BasicBall = ({ ballColor, wheel, setWheel, setPC }) => {
   const ball = useRef();
-  let position = useRef();
+  let posRef = useRef();
   const figure = 8;
   const Angle = 360 / figure;
   const radian = (angle) => (angle * Math.PI) / 180;
-  const radius = 10;
+  const radius = 7;
 
-  const [move, setMove] = useState(0);
+  const [move, setMove] = useState(800);
   const [mcon, setMcon] = useState(false);
 
-  // 빨,주,노,초,파,남,보 7개
-  const [ballColor, setBallColor] = useState([
-    { color: "#ff0000" },
-    { color: "#ff8c00" },
-    { color: "#ffff00" },
-    { color: "#008000" },
-    { color: "#0000ff" },
-    { color: "#4b0082" },
-    { color: "#800080" },
-    { color: "#ffffff" },
-  ]);
-  // console.log(position.current.position.x);
+  console.log(wheel);
   useFrame((state, delta) => {
-    if (wheel === 100) {
+    if (wheel > 0) {
       setMcon(true);
       ball.current.rotation.y += radian(1);
-    } else if (wheel === -100) {
+    } else if (wheel < 0) {
       setMcon(false);
       ball.current.rotation.y -= radian(1);
     }
@@ -42,12 +31,12 @@ const BasicBall = ({ wheel, setWheel }) => {
     ) {
       console.log(mcon);
       setWheel(0);
-      mcon ? setMove((move + 1) % 8) : setMove((8 - move - 1) % 8);
+      mcon ? setMove(move + 1) : setMove(move - 1);
     }
   });
   return (
     <group>
-      <mesh scale={(2, 2, 2)} ref={ball} position={[-30, 0, -5]}>
+      <mesh scale={(2, 2, 2)} ref={ball} position={[-25, 0, 0]}>
         {ballColor.map((val, ind) => {
           return (
             <Sphere
@@ -58,9 +47,9 @@ const BasicBall = ({ wheel, setWheel }) => {
                 0,
                 Math.sin(radian(Angle * ind)) * radius,
               ]}
-              ref={position}
+              ref={posRef}
             >
-              {move === ind ? (
+              {Math.abs(move) % 8 === ind ? (
                 <MeshDistortMaterial
                   color={val.color}
                   attach="material"
