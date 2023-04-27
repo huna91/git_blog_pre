@@ -2,16 +2,10 @@
   margin: 0;
 }
 .canvas_wrap {
-<<<<<<< HEAD
-  width: 100%;
-  height: 800px;
-  border: 1px solid red;
-=======
   position: fixed;
   width: 1600px;
   height: 762px;
->>>>>>> 6446b801b39614f30ddb08d1bd1687c60b36f8a6
-  background-color: black;
+  background: black;
 }
 * {
   margin: 0;
