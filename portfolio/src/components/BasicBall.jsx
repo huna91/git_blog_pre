@@ -2,7 +2,17 @@ import React, { useEffect, useRef, useState } from "react";
 import { Sphere, MeshDistortMaterial } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
-const BasicBall = ({ ballColor, wheel, setWheel, setPC }) => {
+const BasicBall = ({ wheel, setWheel, setPC }) => {
+  const [color, setColor] = useState([
+    { color: "#ffffff" },
+    { color: "#ff0000" },
+    { color: "#ff8c00" },
+    { color: "#ffff00" },
+    { color: "#008000" },
+    { color: "#0000ff" },
+    { color: "#4b0082" },
+    { color: "#800080" },
+  ]);
   const ball = useRef();
   let posRef = useRef();
   const figure = 8;
@@ -13,7 +23,6 @@ const BasicBall = ({ ballColor, wheel, setWheel, setPC }) => {
   const [move, setMove] = useState(800);
   const [mcon, setMcon] = useState(false);
 
-  console.log(wheel);
   useFrame((state, delta) => {
     if (wheel > 0) {
       setMcon(true);
@@ -29,7 +38,6 @@ const BasicBall = ({ ballColor, wheel, setWheel, setPC }) => {
         10 &&
       wheel !== 0
     ) {
-      console.log(mcon);
       setWheel(0);
       mcon ? setMove(move + 1) : setMove(move - 1);
     }
@@ -37,7 +45,7 @@ const BasicBall = ({ ballColor, wheel, setWheel, setPC }) => {
   return (
     <group>
       <mesh scale={(2, 2, 2)} ref={ball} position={[-25, 0, 0]}>
-        {ballColor.map((val, ind) => {
+        {color.map((val, ind) => {
           return (
             <Sphere
               visible
